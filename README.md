@@ -54,7 +54,6 @@ switch($page){
     </nav>
 </header>
 ```
-
 ### footer.php
 ```php
 <footer>
@@ -64,5 +63,73 @@ switch($page){
 </body>
 </html>
 ```
+### user.php
+```php
+<?php
+
+function user_list() {
+    include "config/database.php";
+    global $conn;
+
+    $query = mysqli_query($conn, "SELECT * FROM users");
+
+    include "views/user/list.php";
+}
+```
+### app.php
+```php
+<?php
+$base_url = "http://localhost/lab9_php_modular/";
+
+$app_name = "Modular PHP App";
+
+date_default_timezone_set("Asia/Jakarta");
+
+function url($path = "") {
+    global $base_url;
+    return $base_url . $path;
+}
+```
+### database.php
+```php
+<?php
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "latihan1";
+
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+if (!$conn) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
+}
+```
+### list.php
+```php
+<?php include "views/header.php"; ?>
+
+<h2>Daftar User</h2>
+<table border="1">
+    <tr>
+        <th>ID</th><th>Nama</th><th>Email</th>
+    </tr>
+
+    <?php while($row = mysqli_fetch_assoc($query)) : ?>
+        <tr>
+            <td><?= $row['id']; ?></td>
+            <td><?= $row['nama']; ?></td>
+            <td><?= $row['email']; ?></td>
+        </tr>
+    <?php endwhile; ?>
+</table>
+
+<?php include "views/footer.php"; ?>
+```
 ## Tampilan Home
 ![img](img/home.png)
+
+## Tampilan User
+![img](img/user.png)
+
+## Tampilan About
+![img](img/about.png)
