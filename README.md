@@ -125,6 +125,32 @@ if (!$conn) {
 
 <?php include "views/footer.php"; ?>
 ```
+### home.php
+```php
+<?php require('header.php'); ?>
+
+<div class="content">
+    <h2>Ini Halaman Home</h2>
+    <p>Ini adalah bagian content dari halaman.</p>
+</div>
+
+<?php require('footer.php'); ?>
+```
+### about.php
+```php
+<?php require('header.php'); ?>
+
+<div class="content">
+    <h2>Ini Halaman About</h2>
+    <p>Ini adalah bagian About dari halaman.</p>
+</div>
+
+<?php require('footer.php'); ?>
+```
+### Tabel user pada database
+![img](img/table.png)
+
+# Output
 ## Tampilan Home
 ![img](img/home.png)
 
